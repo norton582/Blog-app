@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme";
+import { ModeToggle } from "@/components/toggle-mod";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +25,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning> 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <div className="h-12 bg-gray-100 border dark:bg-gray-800 flex items-center justify-center gap-100 px-4">
+            <h2 className="scroll-m-20 border-b pb-2 text-lg font-semibold tracking-tight first:mt-0">
+              Prisma Master
+            </h2>
+            <div><ModeToggle/></div>
+          </div>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
