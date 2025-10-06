@@ -1,1 +1,1 @@
-Application pour apprendre les bases essentiels de Prisma
+Application pour apprendre les bases essentiels de Nextjs avec Prisma et Postgresql
